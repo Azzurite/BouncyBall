@@ -25,10 +25,11 @@ public abstract class HitGroundNotifier {
 	 * Notifies all listeners that the matter hit the ground.
 	 *
 	 * @param matter
+	 * @param processedTime
 	 */
-	public void notifyListeners(Matter matter) {
+	public void notifyListeners(Matter matter, double processedTime) {
 		for (final HitGroundListener listener : listeners) {
-			listener.hitGround(matter);
+			listener.hitGround(matter, processedTime);
 		}
 	}
 }

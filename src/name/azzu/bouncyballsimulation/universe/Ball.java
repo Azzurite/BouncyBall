@@ -10,8 +10,8 @@ public class Ball extends Matter {
 	 *
 	 * @param initialVelocity
 	 */
-	public Ball(double initialVelocity) {
-		super(initialVelocity);
+	public Ball(double initialVelocity, PlanetMatterPhysics physicsStrategy) {
+		super(initialVelocity, physicsStrategy);
 	}
 
 }

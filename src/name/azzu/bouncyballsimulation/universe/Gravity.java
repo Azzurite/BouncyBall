@@ -24,7 +24,7 @@ public class Gravity {
 	/**
 	 * @return the velocity decay
 	 */
-	public Double getVelocityDecay() {
+	public double getVelocityDecay() {
 		return velocityDecay;
 	}
 }

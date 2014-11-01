@@ -17,8 +17,6 @@ public class BouncyBallSimulation extends HitGroundNotifier implements HitGround
 
 	private double prevBallHeight = Double.NaN;
 
-	private boolean isBallResting;
-
 	private int currentSecond = 0;
 
 	/**
@@ -38,7 +36,6 @@ public class BouncyBallSimulation extends HitGroundNotifier implements HitGround
 
 		this.simulatedPlanet = simulatedPlanet;
 		this.bouncyBall = bouncyBall;
-		isBallResting = bouncyBall.getHeight() == 0 && bouncyBall.getVerticalVelocity() == 0;
 	}
 
 	/**
@@ -48,7 +45,6 @@ public class BouncyBallSimulation extends HitGroundNotifier implements HitGround
 		bouncyBall.secondPassed(simulatedPlanet);
 		++currentSecond;
 
-		setBallRestingStatus();
 		prevBallHeight = bouncyBall.getHeight();
 	}
 
@@ -81,19 +77,16 @@ public class BouncyBallSimulation extends HitGroundNotifier implements HitGround
 	}
 
 	@Override
-	public void hitGround(Matter m) {
+	public void hitGround(Matter m, double processedTime) {
 		++ballHitGroundCounter;
-		notifyListeners(m);
+		notifyListeners(m, processedTime);
 	}
 
 	/**
 	 * @return if the ball is resting.
 	 */
 	public boolean isBallResting() {
-		return isBallResting;
+		return Matter.isEffectivelyResting(bouncyBall);
 	}
 
-	private void setBallRestingStatus() {
-		isBallResting = bouncyBall.getHeight() == 0 && prevBallHeight == 0;
-	}
 }

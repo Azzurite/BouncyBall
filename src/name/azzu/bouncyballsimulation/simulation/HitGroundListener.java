@@ -8,10 +8,11 @@ import name.azzu.bouncyballsimulation.universe.Matter;
 public interface HitGroundListener {
 
 	/**
-	 * Signals the listener that the matter m hit the ground.
+	 * Signals this listener that the matter m hit the ground.
 	 *
 	 * @param m
+	 * @param processedTime
 	 */
-	public void hitGround(Matter m);
+	public void hitGround(Matter m, double processedTime);
 
 }
