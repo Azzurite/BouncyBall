@@ -21,7 +21,7 @@ public class BouncyBallSimulationApp implements Runnable {
 	}
 
 	private static boolean shouldStop(BouncyBallSimulation simulation) {
-		return simulation.isBallResting() || simulation.getBallHitGroundCounter() >= 100;
+		return simulation.isBallResting() || simulation.getBallHitGroundCounter() >= 5;
 	}
 
 	public static final Map<String, PlanetMatterPhysics> SELECTABLE_PHYSICS;
